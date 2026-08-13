@@ -1,3 +1,3 @@
 import 'server-only';
 
-export {};
+export { client } from './client';

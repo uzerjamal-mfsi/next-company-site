@@ -13,8 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       HUSKY: '0'
-      CMS_API_KEY: dummy-ci-value
-      CMS_ENDPOINT: https://dummy-cms.example.com
+      NEXT_PUBLIC_SANITY_PROJECT_ID: ypsb8jgv
+      NEXT_PUBLIC_SANITY_DATASET: production
       NEXT_PUBLIC_SITE_URL: https://example.com
     steps:
       - uses: actions/checkout@v4
