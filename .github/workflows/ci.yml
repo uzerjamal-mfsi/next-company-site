@@ -13,8 +13,9 @@ jobs:
     runs-on: ubuntu-latest
     env:
       HUSKY: '0'
-      NEXT_PUBLIC_SANITY_PROJECT_ID: ypsb8jgv
-      NEXT_PUBLIC_SANITY_DATASET: production
+      CONTENTFUL_SPACE_ID: dummy-space-id
+      CONTENTFUL_ENVIRONMENT: master
+      CONTENTFUL_DELIVERY_TOKEN: dummy-delivery-token
       NEXT_PUBLIC_SITE_URL: https://example.com
     steps:
       - uses: actions/checkout@v4
