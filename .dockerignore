@@ -1,0 +1,15 @@
+node_modules
+.next
+.git
+.env
+.env.*
+!.env.example
+docs
+.opencode
+__tests__
+coverage
+Dockerfile
+docker-compose.yml
+.dockerignore
+README.md
+*.tsbuildinfo
