@@ -10,6 +10,9 @@
   --color-muted: #f3f4f6;
   --color-muted-foreground: #6b7280;
 
+  --color-hero: #eff6ff;
+  --color-hero-foreground: #1f2937;
+
   --color-border: #e5e7eb;
 }
 
@@ -24,6 +27,9 @@
 
   --color-muted: #1f2937;
   --color-muted-foreground: #9ca3af;
+
+  --color-hero: #172554;
+  --color-hero-foreground: #f9fafb;
 
   --color-border: #374151;
 }
