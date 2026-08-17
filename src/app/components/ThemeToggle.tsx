@@ -16,8 +16,8 @@ export default function ThemeToggle() {
       className="border-border text-foreground rounded-lg border p-2 transition hover:opacity-80"
       aria-label="Toggle theme"
     >
-      <span className="dark:hidden">Dark</span>
-      <span className="hidden dark:inline">Light</span>
+      <span className="dark:hidden">🌙</span>
+      <span className="hidden dark:inline">☀️</span>
     </button>
   );
 }
