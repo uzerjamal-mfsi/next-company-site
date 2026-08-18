@@ -58,7 +58,7 @@ export default function TeamMembers() {
               <p className="text-muted-foreground mb-6 leading-relaxed">{member.bio}</p>
 
               <span className="text-primary mt-auto font-medium transition-colors hover:opacity-80">
-                View profile →
+                View profile
               </span>
             </Link>
           ))}

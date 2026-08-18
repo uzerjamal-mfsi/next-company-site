@@ -28,7 +28,7 @@ export default function FeaturedPosts() {
             href="/blog"
             className="text-primary hidden font-medium transition-colors hover:opacity-80 md:block"
           >
-            View all posts →
+            View all posts
           </Link>
         </div>
 
@@ -53,7 +53,7 @@ export default function FeaturedPosts() {
                   href={post.href}
                   className="text-primary mt-auto font-medium transition-colors hover:opacity-80"
                 >
-                  Read more →
+                  Read more
                 </Link>
               </div>
             </article>
