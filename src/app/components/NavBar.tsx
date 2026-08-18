@@ -28,6 +28,12 @@ export default function NavBar() {
             Services
           </Link>
           <Link
+            href="/team"
+            className="text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Team
+          </Link>
+          <Link
             href="/blog"
             className="text-muted-foreground hover:text-foreground transition-colors"
           >
