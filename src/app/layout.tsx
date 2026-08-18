@@ -5,8 +5,8 @@ import { ThemeProvider } from './components/ThemeProvider';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Company Website',
-  description: 'Company Website build with NextJS',
+  title: 'The Company',
+  description: 'Software Services',
 };
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
