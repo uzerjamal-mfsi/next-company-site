@@ -32,6 +32,27 @@ export default function BlogList() {
           <h1 className="text-foreground text-3xl font-bold">Blog</h1>
 
           <p className="text-muted-foreground mx-auto mt-2 max-w-2xl">Blogs from our Team.</p>
+
+          <form
+            role="search"
+            method="get"
+            action="/blog"
+            className="mx-auto mt-8 flex max-w-md flex-col gap-3 sm:flex-row"
+          >
+            <input
+              id="blog-search"
+              type="search"
+              placeholder="Search"
+              autoComplete="off"
+              className="border-border bg-background text-foreground w-full rounded-lg border px-4 py-3"
+            />
+            <button
+              type="submit"
+              className="bg-primary text-primary-foreground rounded-lg px-6 py-3 font-semibold"
+            >
+              Search
+            </button>
+          </form>
         </header>
 
         <div>
