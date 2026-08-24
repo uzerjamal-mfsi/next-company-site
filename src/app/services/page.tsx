@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { getServices, getSiteSettings } from '@/lib/contentful/client';
 import ServicesList from '../components/ServicesList';
 
 export const metadata: Metadata = {
@@ -6,6 +7,10 @@ export const metadata: Metadata = {
   description: 'Explore our services',
 };
 
-export default function ServicesPage() {
-  return <ServicesList />;
+export default async function ServicesPage() {
+  const [services, siteSettings] = await Promise.all([getServices(), getSiteSettings()]);
+
+  return (
+    <ServicesList services={services} companyName={siteSettings?.companyName ?? 'The Company'} />
+  );
 }

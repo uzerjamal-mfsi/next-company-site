@@ -1,13 +1,20 @@
 import Link from 'next/link';
+import type { SiteSettings } from '@/lib/contentful/types';
 import ThemeToggle from './ThemeToggle';
 
-export default function NavBar() {
+interface NavBarProps {
+  siteSettings: SiteSettings | null;
+}
+
+export default function NavBar({ siteSettings }: NavBarProps) {
+  const companyName = siteSettings?.companyName ?? 'The Company';
+
   return (
     <nav className="bg-background border-border sticky top-0 z-50 w-full border-b">
       <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-6">
         <div>
           <Link href="/" className="text-primary text-2xl font-bold">
-            The Company
+            {companyName}
           </Link>
         </div>
 

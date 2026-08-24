@@ -9,24 +9,10 @@ export type TeamMember = {
   imageUrl: string;
 };
 
-export const teamMembersData: TeamMember[] = [
-  {
-    id: 'uzer-jamal',
-    name: 'Uzer Jamal',
-    designation: 'Software Engineer',
-    bio: 'Placeholder',
-    imageUrl: '',
-  },
-];
-
-export function getTeamMember(id: string): TeamMember | undefined {
-  return teamMembersData.find((member) => member.id === id);
-}
-
-export function TeamGrid() {
+export function TeamGrid({ members }: { members: TeamMember[] }) {
   return (
     <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-      {teamMembersData.map((member) => (
+      {members.map((member) => (
         <Link
           key={member.id}
           href={`/team/${member.id}`}
@@ -37,7 +23,6 @@ export function TeamGrid() {
             alt={`Portrait of ${member.name}`}
             width={100}
             height={100}
-            unoptimized
             className="mx-auto mb-6 h-24 w-24 rounded-full object-cover"
           />
 
@@ -56,7 +41,7 @@ export function TeamGrid() {
   );
 }
 
-export default function TeamMembers() {
+export default function TeamMembers({ members }: { members: TeamMember[] }) {
   return (
     <section className="bg-muted py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -68,7 +53,7 @@ export default function TeamMembers() {
           </p>
         </div>
 
-        <TeamGrid />
+        <TeamGrid members={members} />
       </div>
     </section>
   );

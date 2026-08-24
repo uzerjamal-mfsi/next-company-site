@@ -1,10 +1,13 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { type BlogPost, blogPostsData, getBlogPost } from '../../components/BlogList';
+import { getBlogPost, getBlogPostSlugs } from '@/lib/contentful/client';
+import type { BlogPost } from '@/lib/contentful/types';
 
-export function generateStaticParams() {
-  return blogPostsData.map((post) => ({ slug: post.slug }));
+export async function generateStaticParams() {
+  const slugs = await getBlogPostSlugs();
+  return slugs;
 }
 
 export async function generateMetadata({
@@ -13,7 +16,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const post = getBlogPost(slug);
+  const post = await getBlogPost(slug);
 
   if (!post) {
     return { title: 'Blog Post | The Company' };
@@ -29,6 +32,12 @@ export function BlogPostView({ post }: { post: BlogPost }) {
   return (
     <article className="bg-background py-20">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+        {post.imageUrl && (
+          <div className="relative mb-8 aspect-video w-full overflow-hidden rounded-2xl">
+            <Image src={post.imageUrl} alt={post.title} fill className="object-cover" priority />
+          </div>
+        )}
+
         <p className="text-muted-foreground mb-4 text-sm">
           By {post.author} · {post.date}
         </p>
@@ -51,9 +60,11 @@ export function BlogPostView({ post }: { post: BlogPost }) {
   );
 }
 
+export const revalidate = 3600;
+
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const post = getBlogPost(slug);
+  const post = await getBlogPost(slug);
 
   if (!post) {
     notFound();

@@ -1,17 +1,26 @@
 import Link from 'next/link';
 
-export default function Hero() {
+interface HeroProps {
+  siteSettings: {
+    heroTitle: string;
+    heroSubtitle: string;
+    companyName: string;
+  } | null;
+}
+
+export default function Hero({ siteSettings }: HeroProps) {
+  const title = siteSettings?.heroTitle ?? null;
+  const subtitle = siteSettings?.heroSubtitle ?? null;
+
   return (
     <section className="bg-hero relative">
       <div className="mx-auto max-w-7xl px-4 py-24 sm:px-4 lg:px-8 lg:py-32">
         <div className="text-center">
           <h1 className="text-hero-foreground mb-6 text-5xl font-extrabold tracking-tight md:text-6xl">
-            Build Faster with <span className="text-primary">The Company</span>
+            {title}
           </h1>
 
-          <p className="text-muted-foreground mx-auto mt-4 mb-10 max-w-2xl text-xl">
-            From idea to production, we turn ideas into digital products.
-          </p>
+          <p className="text-muted-foreground mx-auto mt-4 mb-10 max-w-2xl text-xl">{subtitle}</p>
 
           <div className="flex justify-center gap-4">
             <Link

@@ -2,10 +2,12 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { getTeamMember, type TeamMember, teamMembersData } from '../../components/TeamMembers';
+import { getTeamMember, getTeamMembers } from '@/lib/contentful/client';
+import type { TeamMember } from '@/lib/contentful/types';
 
-export function generateStaticParams() {
-  return teamMembersData.map((member) => ({ id: member.id }));
+export async function generateStaticParams() {
+  const members = await getTeamMembers();
+  return members.map((member) => ({ id: member.id }));
 }
 
 export async function generateMetadata({
@@ -14,7 +16,7 @@ export async function generateMetadata({
   params: Promise<{ id: string }>;
 }): Promise<Metadata> {
   const { id } = await params;
-  const member = getTeamMember(id);
+  const member = await getTeamMember(id);
 
   if (!member) {
     return { title: 'Team Member | The Company' };
@@ -35,7 +37,6 @@ export function TeamMemberProfile({ member }: { member: TeamMember }) {
           alt={`Portrait of ${member.name}`}
           width={160}
           height={160}
-          unoptimized
           className="mx-auto mb-6 h-40 w-40 rounded-full object-cover"
         />
 
@@ -58,7 +59,7 @@ export function TeamMemberProfile({ member }: { member: TeamMember }) {
 
 export default async function TeamMemberPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const member = getTeamMember(id);
+  const member = await getTeamMember(id);
 
   if (!member) {
     notFound();

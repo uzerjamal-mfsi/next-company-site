@@ -1,12 +1,31 @@
 import { TeamGrid } from './TeamMembers';
 
-export default function About() {
+interface AboutProps {
+  siteSettings: {
+    companyName: string;
+    missionStatement: string;
+    visionStatement: string;
+  } | null;
+  teamMembers: Array<{
+    id: string;
+    name: string;
+    designation: string;
+    bio: string;
+    imageUrl: string;
+  }>;
+}
+
+export default function About({ siteSettings, teamMembers }: AboutProps) {
+  const companyName = siteSettings?.companyName ?? 'The Company';
+  const mission = siteSettings?.missionStatement ?? 'To help companies ship software faster';
+  const vision = siteSettings?.visionStatement ?? 'Every idea can become a reality';
+
   return (
     <>
       <section className="bg-background py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-foreground text-3xl font-bold">About Us</h1>
+            <h1 className="text-foreground text-3xl font-bold">About {companyName}</h1>
 
             <p className="text-muted-foreground mx-auto mt-2 max-w-2xl">Learn more about us.</p>
           </div>
@@ -17,7 +36,7 @@ export default function About() {
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-foreground mb-4 text-center text-3xl font-bold">Our Mission</h2>
 
-          <p className="text-muted-foreground text-center leading-relaxed">Placeholder.</p>
+          <p className="text-muted-foreground text-center leading-relaxed">{mission}</p>
         </div>
       </section>
 
@@ -25,7 +44,7 @@ export default function About() {
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-foreground mb-4 text-center text-3xl font-bold">Our Vision</h2>
 
-          <p className="text-muted-foreground text-center leading-relaxed">Placeholder.</p>
+          <p className="text-muted-foreground text-center leading-relaxed">{vision}</p>
         </div>
       </section>
 
@@ -39,7 +58,7 @@ export default function About() {
             </p>
           </div>
 
-          <TeamGrid />
+          <TeamGrid members={teamMembers} />
         </div>
       </section>
     </>

@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
+import { getSiteSettings } from '@/lib/contentful/client';
+import Footer from './components/Footer';
 import NavBar from './components/NavBar';
 import { ThemeProvider } from './components/ThemeProvider';
 import './globals.css';
@@ -9,7 +11,9 @@ export const metadata: Metadata = {
   description: 'Software Services',
 };
 
-export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
+export default async function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
+  const siteSettings = await getSiteSettings();
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="flex min-h-full flex-col">
@@ -19,8 +23,9 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
           enableSystem
           disableTransitionOnChange
         >
-          <NavBar />
-          <main>{children}</main>
+          <NavBar siteSettings={siteSettings} />
+          <main className="flex-1">{children}</main>
+          <Footer siteSettings={siteSettings} />
         </ThemeProvider>
       </body>
     </html>

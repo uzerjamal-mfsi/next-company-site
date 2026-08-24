@@ -1,17 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import type { BlogPost } from '@/lib/contentful/types';
 
-const blogPosts = [
-  {
-    title: 'Placeholder',
-    excerpt: 'Placeholder.',
-    date: 'Aug 15, 2026',
-    imageUrl: '',
-    href: '/',
-  },
-];
+interface FeaturedPostsProps {
+  posts: Pick<BlogPost, 'slug' | 'title' | 'excerpt' | 'date' | 'imageUrl'>[];
+}
 
-export default function FeaturedPosts() {
+export default function FeaturedPosts({ posts }: FeaturedPostsProps) {
   return (
     <section className="bg-background py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -33,13 +28,25 @@ export default function FeaturedPosts() {
         </div>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-          {blogPosts.map((post, index) => (
+          {posts.map((post, index) => (
             <article
               key={index}
               className="border-border bg-background flex flex-col overflow-hidden rounded-2xl border shadow-sm transition-shadow hover:shadow-lg"
             >
               <div className="relative h-48 w-full">
-                <Image src={post.imageUrl} alt={post.title} fill className="object-cover" />
+                {post.imageUrl ? (
+                  <Image
+                    src={post.imageUrl}
+                    alt={post.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                ) : (
+                  <div className="bg-muted flex h-full w-full items-center justify-center">
+                    <span className="text-muted-foreground">No image</span>
+                  </div>
+                )}
               </div>
 
               <div className="flex flex-grow flex-col p-6">
@@ -50,7 +57,7 @@ export default function FeaturedPosts() {
                 <p className="text-muted-foreground mb-6 flex-grow">{post.excerpt}</p>
 
                 <Link
-                  href={post.href}
+                  href={`/blog/${post.slug}`}
                   className="text-primary mt-auto font-medium transition-colors hover:opacity-80"
                 >
                   Read more
