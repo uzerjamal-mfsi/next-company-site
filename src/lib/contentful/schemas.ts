@@ -16,6 +16,7 @@ export const serviceSchema = z.object({
   description: z.string(),
   price: z.string(),
   image: z.object({ sys: z.object({ id: z.string() }) }).optional(),
+  highlights: z.array(z.string()).optional(),
 });
 
 export const teamMemberSchema = z.object({
@@ -30,6 +31,7 @@ export const blogPostSchema = z.object({
   title: z.string(),
   slug: z.string(),
   author: z.string(),
+  date: z.string(),
   excerpt: z.string(),
   content: z
     .object({

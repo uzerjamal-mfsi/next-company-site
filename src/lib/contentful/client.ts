@@ -139,7 +139,7 @@ export async function getServices(): Promise<Service[]> {
     description: svc.description,
     price: `$${Number(svc.price).toLocaleString()}`,
     imageUrl: getAssetUrl(assetMap, svc.image),
-    highlights: [],
+    highlights: svc.highlights ?? [],
   }));
 }
 
@@ -188,7 +188,7 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
     slug: p.slug,
     title: p.title,
     author: p.author,
-    date: new Date().toLocaleDateString('en-US', {
+    date: new Date(p.date).toLocaleDateString('en-US', {
       month: 'short',
       day: 'numeric',
       year: 'numeric',
@@ -211,7 +211,7 @@ export async function getBlogPost(slug: string): Promise<BlogPost | null> {
     slug: item.slug,
     title: item.title,
     author: item.author,
-    date: new Date().toLocaleDateString('en-US', {
+    date: new Date(item.date).toLocaleDateString('en-US', {
       month: 'short',
       day: 'numeric',
       year: 'numeric',

@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { CONSTANTS } from '@/constants/constants';
 import type { SiteSettings } from '@/lib/contentful/types';
@@ -10,22 +9,12 @@ interface NavBarProps {
 
 export default function NavBar({ siteSettings }: NavBarProps) {
   const companyName = siteSettings?.companyName ?? CONSTANTS.fallback.companyName;
-  const logoUrl = siteSettings?.logoUrl;
 
   return (
     <nav className="bg-background border-border sticky top-0 z-50 w-full border-b">
       <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-6">
         <div>
-          <Link href="/" className="text-primary flex items-center gap-2 text-2xl font-bold">
-            {logoUrl ? (
-              <Image
-                src={logoUrl}
-                alt={companyName}
-                width={32}
-                height={32}
-                className="h-8 w-auto"
-              />
-            ) : null}
+          <Link href="/" className="text-primary flex items-center text-2xl font-bold">
             {companyName}
           </Link>
         </div>
