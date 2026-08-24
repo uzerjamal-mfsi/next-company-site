@@ -1,9 +1,9 @@
 import { expect, test } from 'vitest';
 import { render } from 'vitest-browser-react';
-import Home from '@/app/page';
+import ServicesPage from '@/app/services/page';
 
-test('renders the home page successfully', async () => {
-  const screen = await render(<Home />);
+test('renders the services page successfully', async () => {
+  const screen = await render(<ServicesPage />);
 
   await expect.element(screen.getByRole('heading', { level: 1 })).toBeVisible();
 });
