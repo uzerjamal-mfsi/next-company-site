@@ -1,11 +1,9 @@
 import Link from 'next/link';
+import { CONSTANTS } from '@/constants/constants';
+import type { SiteSettings } from '@/lib/contentful/types';
 
 interface HeroProps {
-  siteSettings: {
-    heroTitle: string;
-    heroSubtitle: string;
-    companyName: string;
-  } | null;
+  siteSettings: SiteSettings | null;
 }
 
 export default function Hero({ siteSettings }: HeroProps) {
@@ -27,14 +25,14 @@ export default function Hero({ siteSettings }: HeroProps) {
               href="/services"
               className="bg-primary text-primary-foreground rounded-lg px-8 py-3 font-semibold"
             >
-              Our Services
+              {CONSTANTS.sections.hero.ctaServices}
             </Link>
 
             <Link
               href="/contact"
               className="bg-background text-primary rounded-lg px-8 py-3 font-semibold"
             >
-              Contact Us
+              {CONSTANTS.sections.hero.ctaContact}
             </Link>
           </div>
         </div>

@@ -1,13 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
-
-export type TeamMember = {
-  id: string;
-  name: string;
-  designation: string;
-  bio: string;
-  imageUrl: string;
-};
+import { CONSTANTS } from '@/constants/constants';
+import type { TeamMember } from '@/lib/contentful/types';
 
 export function TeamGrid({ members }: { members: TeamMember[] }) {
   return (
@@ -33,7 +27,7 @@ export function TeamGrid({ members }: { members: TeamMember[] }) {
           <p className="text-muted-foreground mb-6 leading-relaxed">{member.bio}</p>
 
           <span className="text-primary mt-auto font-medium transition-colors hover:opacity-80">
-            View profile
+            {CONSTANTS.sections.team.viewProfile}
           </span>
         </Link>
       ))}
@@ -46,10 +40,10 @@ export default function TeamMembers({ members }: { members: TeamMember[] }) {
     <section className="bg-muted py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-16 text-center">
-          <h1 className="text-foreground text-3xl font-bold">Our Team</h1>
+          <h1 className="text-foreground text-3xl font-bold">{CONSTANTS.sections.team.title}</h1>
 
           <p className="text-muted-foreground mx-auto mt-2 max-w-2xl">
-            The people behind our products and services.
+            {CONSTANTS.sections.team.subtitle}
           </p>
         </div>
 

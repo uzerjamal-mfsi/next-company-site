@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { CONSTANTS } from '@/constants/constants';
 import type { BlogPost } from '@/lib/contentful/types';
 
 interface FeaturedPostsProps {
@@ -12,18 +13,18 @@ export default function FeaturedPosts({ posts }: FeaturedPostsProps) {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 flex items-end justify-between">
           <div>
-            <h2 className="text-foreground text-3xl font-bold">Featured Articles</h2>
+            <h2 className="text-foreground text-3xl font-bold">
+              {CONSTANTS.sections.blog.featuredTitle}
+            </h2>
 
-            <p className="text-muted-foreground mt-2">
-              Insights, updates, and tutorials from our team.
-            </p>
+            <p className="text-muted-foreground mt-2">{CONSTANTS.sections.blog.featuredSubtitle}</p>
           </div>
 
           <Link
             href="/blog"
             className="text-primary hidden font-medium transition-colors hover:opacity-80 md:block"
           >
-            View all posts
+            {CONSTANTS.sections.blog.viewAll}
           </Link>
         </div>
 
@@ -60,7 +61,7 @@ export default function FeaturedPosts({ posts }: FeaturedPostsProps) {
                   href={`/blog/${post.slug}`}
                   className="text-primary mt-auto font-medium transition-colors hover:opacity-80"
                 >
-                  Read more
+                  {CONSTANTS.sections.blog.readMore}
                 </Link>
               </div>
             </article>

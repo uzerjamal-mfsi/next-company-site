@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { CONSTANTS } from '@/constants/constants';
 import type { Service } from '@/lib/contentful/types';
 
 interface ServicesListProps {
@@ -12,10 +13,12 @@ export default function ServicesList({ services, companyName }: ServicesListProp
       <section className="bg-background py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-foreground text-3xl font-bold">{companyName} Services</h1>
+            <h1 className="text-foreground text-3xl font-bold">
+              {companyName} {CONSTANTS.sections.services.title}
+            </h1>
 
             <p className="text-muted-foreground mx-auto mt-2 max-w-2xl">
-              From idea to production, we turn ideas into digital products.
+              {CONSTANTS.sections.services.subtitle}
             </p>
           </div>
         </div>
