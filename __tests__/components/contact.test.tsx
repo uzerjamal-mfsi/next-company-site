@@ -1,9 +1,9 @@
 import { expect, test } from 'vitest';
 import { render } from 'vitest-browser-react';
-import TeamPage from '@/app/team/page';
+import ContactPage from '@/app/contact/page';
 
-test('renders the team page successfully', async () => {
-  const screen = await render(<TeamPage />);
+test('renders the contact page', async () => {
+  const screen = await render(<ContactPage />);
 
   await expect.element(screen.getByRole('heading', { level: 1 })).toBeVisible();
 });
