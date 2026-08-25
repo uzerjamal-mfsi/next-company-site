@@ -36,9 +36,22 @@ export async function submitContact(
     };
   }
 
-  // TODO: persist submission to CMS/backend when available.
-  return {
-    success: true,
-    message: 'Thanks for reaching out! We will get back to you soon.',
-  };
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/contact`,
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(result.data),
+    },
+  );
+
+  if (!response.ok) {
+    return {
+      success: false,
+      message: 'Please try again later.',
+    };
+  }
+
+  const data = await response.json();
+  return data;
 }

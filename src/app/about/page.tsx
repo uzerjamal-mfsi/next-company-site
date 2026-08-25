@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { getSiteSettings, getTeamMembers } from '@/lib/contentful/client';
 import About from '../components/About';
 
 export const metadata: Metadata = {
@@ -6,6 +7,8 @@ export const metadata: Metadata = {
   description: 'Learn more about The Company',
 };
 
-export default function AboutPage() {
-  return <About />;
+export default async function AboutPage() {
+  const [siteSettings, teamMembers] = await Promise.all([getSiteSettings(), getTeamMembers()]);
+
+  return <About siteSettings={siteSettings} teamMembers={teamMembers} />;
 }
