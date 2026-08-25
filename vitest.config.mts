@@ -4,7 +4,6 @@ import { defineConfig } from 'vitest/config';
 
 const alias = {
   '@': fileURLToPath(new URL('./src', import.meta.url)),
-  'next/link': fileURLToPath(new URL('./__tests__/stubs/next-link.tsx', import.meta.url)),
 };
 
 export default defineConfig({

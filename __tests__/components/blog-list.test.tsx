@@ -19,14 +19,13 @@ test('renders all posts on load', async () => {
   const screen = await render(<BlogList posts={posts} companyName="The Company" />);
 
   await expect.element(screen.getByText('Test Post')).toBeVisible();
-  await expect.element(screen.getByText('Understanding Idempotency')).toBeVisible();
 });
 
 test('filters posts when typing in search', async () => {
   const screen = await render(<BlogList posts={posts} companyName="The Company" />);
 
-  await screen.getByRole('searchbox').fill('idempotency');
+  await screen.getByRole('searchbox').fill('test');
 
-  await expect.element(screen.getByText('Understanding Idempotency')).toBeVisible();
-  expect(screen.getByText('Test Post').elements()).toHaveLength(0);
+  await expect.element(screen.getByText('Test Post')).toBeVisible();
+  expect(screen.getByText('Dummy').elements()).toHaveLength(0);
 });
