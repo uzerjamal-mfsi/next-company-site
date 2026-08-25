@@ -12,13 +12,19 @@ export function TeamGrid({ members }: { members: TeamMember[] }) {
           href={`/team/${member.id}`}
           className="border-border bg-background rounded-2xl border p-8 text-center transition-shadow hover:shadow-lg"
         >
-          <Image
-            src={member.imageUrl}
-            alt={`Portrait of ${member.name}`}
-            width={100}
-            height={100}
-            className="mx-auto mb-6 h-24 w-24 rounded-full object-cover"
-          />
+          {member.imageUrl ? (
+            <Image
+              src={member.imageUrl}
+              alt={`Portrait of ${member.name}`}
+              width={100}
+              height={100}
+              className="mx-auto mb-6 h-24 w-24 rounded-full object-cover"
+            />
+          ) : (
+            <div className="bg-muted text-muted-foreground mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-full">
+              <span className="text-sm">No photo</span>
+            </div>
+          )}
 
           <h2 className="text-foreground mb-1 text-xl font-bold">{member.name}</h2>
 

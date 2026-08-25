@@ -2,7 +2,7 @@ import { CONSTANTS } from '@/constants/constants';
 import type { Service } from '@/lib/contentful/types';
 
 interface ServicesProps {
-  services: Pick<Service, 'title' | 'description'>[];
+  services: Pick<Service, 'slug' | 'title' | 'description'>[];
 }
 
 export default function Services({ services }: ServicesProps) {
@@ -16,9 +16,9 @@ export default function Services({ services }: ServicesProps) {
         </div>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-          {services.map((service, index) => (
+          {services.map((service) => (
             <div
-              key={index}
+              key={service.slug}
               className="border-border bg-background rounded-2xl border p-8 text-center"
             >
               <h3 className="text-foreground mb-3 text-xl font-bold">{service.title}</h3>

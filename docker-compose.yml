@@ -1,9 +1,15 @@
 services:
   web:
-    build: .
+    build:
+      context: .
+      args:
+        CONTENTFUL_SPACE_ID: ${CONTENTFUL_SPACE_ID}
+        CONTENTFUL_ENVIRONMENT: ${CONTENTFUL_ENVIRONMENT:-master}
+        CONTENTFUL_DELIVERY_TOKEN: ${CONTENTFUL_DELIVERY_TOKEN}
+        NEXT_PUBLIC_BASE_URL: ${NEXT_PUBLIC_BASE_URL:-http://localhost:3000}
     ports:
       - '3000:3000'
+    env_file:
+      - .env.local
     environment:
-      CMS_API_KEY: placeholder-local-dev-key
-      CMS_ENDPOINT: https://cms.example.com/api
-      NEXT_PUBLIC_SITE_URL: https://example.com
+      NODE_ENV: production

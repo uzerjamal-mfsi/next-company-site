@@ -32,13 +32,19 @@ export function TeamMemberProfile({ member }: { member: TeamMember }) {
   return (
     <section className="bg-muted py-20">
       <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
-        <Image
-          src={member.imageUrl}
-          alt={`Portrait of ${member.name}`}
-          width={160}
-          height={160}
-          className="mx-auto mb-6 h-40 w-40 rounded-full object-cover"
-        />
+        {member.imageUrl ? (
+          <Image
+            src={member.imageUrl}
+            alt={`Portrait of ${member.name}`}
+            width={160}
+            height={160}
+            className="mx-auto mb-6 h-40 w-40 rounded-full object-cover"
+          />
+        ) : (
+          <div className="bg-muted text-muted-foreground mx-auto mb-6 flex h-40 w-40 items-center justify-center rounded-full">
+            <span>No photo</span>
+          </div>
+        )}
 
         <h1 className="text-foreground text-3xl font-bold">{member.name}</h1>
 

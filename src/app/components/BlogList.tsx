@@ -33,6 +33,9 @@ export default function BlogList({ posts, companyName }: BlogListProps) {
           </p>
 
           <div role="search" className="mx-auto mt-8 flex max-w-md flex-col gap-3 sm:flex-row">
+            <label htmlFor="blog-search" className="sr-only">
+              {CONSTANTS.sections.blog.searchLabel}
+            </label>
             <input
               id="blog-search"
               type="search"

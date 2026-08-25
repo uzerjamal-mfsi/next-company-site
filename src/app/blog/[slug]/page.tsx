@@ -19,11 +19,11 @@ export async function generateMetadata({
   const post = await getBlogPost(slug);
 
   if (!post) {
-    return { title: 'Blog Post | The Company' };
+    return { title: 'Blog Post' };
   }
 
   return {
-    title: `${post.title} | The Company`,
+    title: post.title,
     description: post.excerpt,
   };
 }

@@ -6,7 +6,7 @@ vi.stubGlobal('process', {
     CONTENTFUL_SPACE_ID: 'test-space',
     CONTENTFUL_ENVIRONMENT: 'master',
     CONTENTFUL_DELIVERY_TOKEN: 'test-delivery-token',
-    NEXT_PUBLIC_SITE_URL: 'https://example.com',
+    NEXT_PUBLIC_BASE_URL: 'https://example.com',
   },
   browser: true,
   version: '',

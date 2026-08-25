@@ -3,7 +3,7 @@ import { getSiteSettings, getTeamMembers } from '@/lib/contentful/client';
 import About from '../components/About';
 
 export const metadata: Metadata = {
-  title: 'About | The Company',
+  title: 'About',
   description: 'Learn more about The Company',
 };
 

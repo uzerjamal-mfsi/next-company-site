@@ -3,7 +3,7 @@ import { getServices, getSiteSettings } from '@/lib/contentful/client';
 import ServicesList from '../components/ServicesList';
 
 export const metadata: Metadata = {
-  title: 'Services | The Company',
+  title: 'Services',
   description: 'Explore our services',
 };
 

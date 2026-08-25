@@ -3,7 +3,7 @@ import { getBlogPosts, getSiteSettings } from '@/lib/contentful/client';
 import BlogList from '../components/BlogList';
 
 export const metadata: Metadata = {
-  title: 'Blog | The Company',
+  title: 'Blog',
   description: 'Blogs from our Team',
 };
 
