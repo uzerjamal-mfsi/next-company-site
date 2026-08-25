@@ -11,6 +11,7 @@ jobs:
   ci:
     name: Lint, typecheck, test, build
     runs-on: ubuntu-latest
+    environment: production
     env:
       HUSKY: '0'
       CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
