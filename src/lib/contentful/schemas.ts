@@ -14,7 +14,7 @@ export const serviceSchema = z.object({
   title: z.string(),
   slug: z.string(),
   description: z.string(),
-  price: z.string(),
+  price: z.union([z.string(), z.number()]),
   image: z.object({ sys: z.object({ id: z.string() }) }).optional(),
   highlights: z.array(z.string()).optional(),
 });

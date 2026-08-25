@@ -7,8 +7,8 @@ interface HeroProps {
 }
 
 export default function Hero({ siteSettings }: HeroProps) {
-  const title = siteSettings?.heroTitle ?? null;
-  const subtitle = siteSettings?.heroSubtitle ?? null;
+  const title = siteSettings?.heroTitle ?? CONSTANTS.fallback.companyName;
+  const subtitle = siteSettings?.heroSubtitle ?? CONSTANTS.fallback.mission;
 
   return (
     <section className="bg-hero relative">

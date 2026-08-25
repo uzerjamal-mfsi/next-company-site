@@ -50,12 +50,12 @@ export default function FeaturedPosts({ posts }: FeaturedPostsProps) {
                 )}
               </div>
 
-              <div className="flex flex-grow flex-col p-6">
+              <div className="flex grow flex-col p-6">
                 <p className="text-muted-foreground mb-2 text-sm">{post.date}</p>
 
                 <h3 className="text-foreground mb-3 text-xl font-bold">{post.title}</h3>
 
-                <p className="text-muted-foreground mb-6 flex-grow">{post.excerpt}</p>
+                <p className="text-muted-foreground mb-6 grow">{post.excerpt}</p>
 
                 <Link
                   href={`/blog/${post.slug}`}
