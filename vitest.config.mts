@@ -4,6 +4,7 @@ import { defineConfig } from 'vitest/config';
 
 const alias = {
   '@': fileURLToPath(new URL('./src', import.meta.url)),
+  'next/link': fileURLToPath(new URL('./__tests__/stubs/next-link.tsx', import.meta.url)),
 };
 
 export default defineConfig({
@@ -15,7 +16,7 @@ export default defineConfig({
           name: 'node',
           environment: 'node',
           setupFiles: ['./vitest.setup.ts'],
-          include: ['__tests__/unit/cms/**/*.test.ts'],
+          include: ['__tests__/unit/**/*.test.ts'],
         },
       },
       {
@@ -23,8 +24,7 @@ export default defineConfig({
         test: {
           name: 'browser',
           setupFiles: ['./vitest.setup.ts'],
-          include: ['__tests__/**/*.test.{ts,tsx}'],
-          exclude: ['__tests__/unit/cms/**/*.test.ts'],
+          include: ['__tests__/components/**/*.test.{ts,tsx}'],
           browser: {
             enabled: true,
             provider: playwright(),
