@@ -3,7 +3,7 @@ import { getTeamMembers } from '@/lib/contentful/client';
 import TeamMembers from '../components/TeamMembers';
 
 export const metadata: Metadata = {
-  title: 'Team | The Company',
+  title: 'Team',
   description: 'Meet the team behind The Company',
 };
 

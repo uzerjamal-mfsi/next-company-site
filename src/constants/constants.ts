@@ -27,21 +27,13 @@ export const CONSTANTS = {
       continueReading: 'Continue reading',
       readMore: 'Read more',
       noPosts: 'No posts found.',
+      searchLabel: 'Search posts',
       searchPlaceholder: 'Search posts...',
     },
     team: {
       title: 'Our Team',
       subtitle: 'The people behind our products and services.',
       viewProfile: 'View profile',
-    },
-    contact: {
-      title: 'Contact',
-      subtitle: 'Get in Touch',
-      nameLabel: 'Name',
-      emailLabel: 'Email',
-      messageLabel: 'Message',
-      sendButton: 'Send Message',
-      sendingButton: 'Sending…',
     },
     hero: {
       ctaServices: 'Our Services',
@@ -57,15 +49,10 @@ export const CONSTANTS = {
       getStarted: 'Get Started',
     },
     footer: {
-      quickLinks: 'Quick Links',
-      legal: 'Legal',
-      privacy: 'Privacy Policy',
-      terms: 'Terms of Service',
       rights: 'All rights reserved.',
     },
     blogPost: {
       by: 'By',
-      back: 'Back to blog',
     },
   },
 } as const;

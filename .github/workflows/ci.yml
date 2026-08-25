@@ -11,12 +11,13 @@ jobs:
   ci:
     name: Lint, typecheck, test, build
     runs-on: ubuntu-latest
+    environment: production
     env:
       HUSKY: '0'
-      CONTENTFUL_SPACE_ID: dummy-space-id
-      CONTENTFUL_ENVIRONMENT: master
-      CONTENTFUL_DELIVERY_TOKEN: dummy-delivery-token
-      NEXT_PUBLIC_SITE_URL: https://example.com
+      CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
+      CONTENTFUL_ENVIRONMENT: ${{ secrets.CONTENTFUL_ENVIRONMENT || 'master' }}
+      CONTENTFUL_DELIVERY_TOKEN: ${{ secrets.CONTENTFUL_DELIVERY_TOKEN }}
+      NEXT_PUBLIC_BASE_URL: ${{ secrets.NEXT_PUBLIC_BASE_URL || 'https://example.com' }}
     steps:
       - uses: actions/checkout@v4
 

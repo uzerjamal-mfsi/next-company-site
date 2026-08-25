@@ -29,9 +29,9 @@ export default function FeaturedPosts({ posts }: FeaturedPostsProps) {
         </div>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-          {posts.map((post, index) => (
+          {posts.map((post) => (
             <article
-              key={index}
+              key={post.slug}
               className="border-border bg-background flex flex-col overflow-hidden rounded-2xl border shadow-sm transition-shadow hover:shadow-lg"
             >
               <div className="relative h-48 w-full">
